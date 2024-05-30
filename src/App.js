@@ -30,6 +30,7 @@ function App() {
           <Route path="/" exact element={<TimeSlots />} />
           <Route path="/slots/:id" element={<SlotDetail />} />
           <Route path='/sessions' element={<Sessions />} />
+          <Route path='/bookings' element={<Sessions />} />
           <Route path='/sessions/:id' element={<SessionDetail />} />
           
         </Routes>
