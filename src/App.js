@@ -1,25 +1,44 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useContext } from 'react'
+
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
+// Slots Imports
+import TimeSlots from "./components/slots/TimeSlots"
+import SlotDetail from './components/slots/SlotDetail';
+
+// Context Import s
+import AuthContext from './context/AuthContext';
+
+// Session Imports
+import Sessions from './components/sessions/Sessions';
+import SessionDetail from './components/sessions/SessionDetail';
+
+
+import Wrapper from './wrapper/Wrapper';
+import Authenticate from './auth/Authenticate';
+
 
 function App() {
+  const token = useContext(AuthContext)
+  console.log(token)
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    {token ? (
+      <Wrapper>
+      <Router>
+        <Routes>
+          <Route path="/" exact element={<TimeSlots />} />
+          <Route path="/slots/:id" element={<SlotDetail />} />
+          <Route path='/sessions' element={<Sessions />} />
+          <Route path='/sessions/:id' element={<SessionDetail />} />
+          
+        </Routes>
+      </Router>    
+    </Wrapper>
+    ) : (<Authenticate />)}
+    </>
   );
 }
 
 export default App;
+
