@@ -10,6 +10,7 @@ const CreateSlot = () => {
         day_name: '', 
         start_time: '', 
         end_time: '', 
+        meeting_link: ''
     });
 
 const handleSubmit = (event) => {
@@ -35,7 +36,7 @@ const handleSubmit = (event) => {
         }
     }
 
-    setFormData({ day_name: '', start_time: '', end_time: '',});
+    setFormData({ day_name: '', start_time: '', end_time: '', meeting_link: ''});
     createASlot()
 };
 
@@ -83,6 +84,10 @@ const handleSubmit = (event) => {
                           <option value="5:00 PM">5:00 PM</option>
                           <option value="10:00 PM">10:00 PM</option>
                       </select>
+                  </div>
+                  <div className='mb-3'>
+                    <label className='form-label'>Meeting Link</label>
+                    <input type='text' className='form-control' id='meeting_link' name='meeting_link' onChange={handleChange} required />
                   </div>
                   <div className="col-4"></div>
 

@@ -22,7 +22,7 @@ const SessionsTable = ({ sessions }) => {
                     <td>{session.creator.first_name} {session.creator.last_name}</td>
                     <td>{dayjs(session.session_date).format("YYYY-MM-DD")}</td>
                     <td>
-                        <a href={`/sessions/${session._id}`} className='btn btn-info btn-sm'><i class="bi bi-eye"></i></a>
+                        <a href={`/sessions/${session._id}`} className='btn btn-info btn-sm'><i className="bi bi-eye"></i></a>
                     </td>
                     
                 </tr>

@@ -21,7 +21,7 @@ const LeaveSession = ({ title, session_date, user, session_id }) => {
   
   }
   return (
-    <div className="modal fade" id="leaveSession" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div className="modal fade" id="leaveSession" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div className="modal-dialog">
       <div className="modal-content">
         <div className="modal-header">

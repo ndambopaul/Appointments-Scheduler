@@ -16,14 +16,16 @@ function TimeSlotTable({ timeSlots = [] }) {
                 
                 <tbody>
                     {timeSlots.map((slot, index) => {  
-
                         return <tr key={slot._id}>
                             <td>{index + 1}</td>
                             <td>{slot.day_name}</td>
                             <td>{slot.start_time}</td>
                             <td>{slot.end_time}</td>
                             <td>
-                                <a href={`/slots/${slot._id}`} className='btn btn-info btn-sm'><i className="bi bi-eye"></i></a>
+                                {slot.booking_status === "booked" ? (<p className="fw-bold text-danger">Booked</p>) : (
+                                    <a href={`/slots/${slot._id}`} className='btn btn-info btn-sm'><i className="bi bi-eye"></i></a>
+                                )}
+                                
                             </td>
                       </tr>
                     })}

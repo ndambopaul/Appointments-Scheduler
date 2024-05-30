@@ -43,7 +43,7 @@ const SlotDetail2 = () => {
                 <p>Start: {slot.start_time}</p>
                 <p>End: {slot.end_time}</p>
               </p>
-              <BookingModal day_name={slot.day_name} />
+              <BookingModal slotId={slot._id} />
             </div>
           </div>
         </div>

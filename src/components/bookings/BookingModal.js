@@ -1,7 +1,7 @@
 import React from "react";
 import BookingForm from "./BookingForm";
 
-const BookNow = ({ day_name }) => {
+const BookNow = ({ slotId }) => {
   return (
     <div>
       <button
@@ -35,7 +35,7 @@ const BookNow = ({ day_name }) => {
               ></button>
             </div>
             <div className="modal-body">
-                <BookingForm />
+                <BookingForm slotId={slotId} />
             </div>
             
           </div>

@@ -2,10 +2,11 @@ import React, {useState, useContext} from "react";
 import { BASE_URL } from "../../utils/config";
 import AuthContext from "../../context/AuthContext";
 
-const BookingForm = () => {
+const BookingForm = ({ slotId }) => {
   const [title, setTitle] = useState(null);
   const [desc, setDesc] = useState(null);
   const [date, setDate] = useState(null);
+  
 
   const token = useContext(AuthContext);
   
@@ -14,7 +15,8 @@ const BookingForm = () => {
       const record = {
           title: title,
           description: desc,
-          date: date
+          date: date,
+          slot: slotId
       }
       console.log(record)
 
