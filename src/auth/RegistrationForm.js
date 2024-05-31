@@ -104,7 +104,7 @@ const RegistrationForm = ({ setShowLoginForm }) => {
                         className="form-control"
                         id="phone-number"
                         name="phone-number"
-                        value={formData.phoneNumber}
+                        value={formData.phone_number}
                         onChange={handleChange}
                         required
                     />
