@@ -100,10 +100,10 @@ const RegistrationForm = ({ setShowLoginForm }) => {
             <div className="col">
                     <label htmlFor="phone_number" className="form-label">Phone Number</label>
                     <input
-                        type="tel"
+                        type="text"
                         className="form-control"
-                        id="phone-number"
-                        name="phone-number"
+                        id="phone_number"
+                        name="phone_number"
                         value={formData.phone_number}
                         onChange={handleChange}
                         required
