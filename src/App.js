@@ -20,7 +20,7 @@ import Authenticate from './auth/Authenticate';
 
 function App() {
   const token = useContext(AuthContext)
-  console.log(token)
+
   return (
     <>
     {token ? (

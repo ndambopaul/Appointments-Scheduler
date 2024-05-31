@@ -29,8 +29,8 @@ const TimeSlots2 = () => {
    <div>
     <CreateSlot />
     <div className="row">
-      <div className="col-3"></div>
-      <div className="col-6 mt-5">
+      <div className="col-2"></div>
+      <div className="col-sm-12 col-md-12 col-lg-8 mt-5">
         <div className='text-end'>
         <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createSlot">
   New Slot

@@ -6,7 +6,7 @@ import AuthContext from '../../context/AuthContext';
 
 import JoinSession from './JoinSession';
 import LeaveSession from './LeaveSession';
-
+import RemoveStudent from './RemoveStudent';
 
 import dayjs from 'dayjs';
 
@@ -18,8 +18,8 @@ const SessionDetail = () => {
 
     const [session, setSession] = useState({})
     const [people, setPeople] = useState([])
+    const [studentSessions, setStudentSessions] = useState([]);
     
-    console.log({ id: id })
 
     useEffect(() => {
         const getSession = async() => {
@@ -34,7 +34,7 @@ const SessionDetail = () => {
             setSession(data)
         }
         getSession()
-    }, [id])
+    }, [token])
 
     const formattedDate = dayjs(session.session_date).format('YYYY-MM-DD')
     console.log(formattedDate)
@@ -49,16 +49,32 @@ const SessionDetail = () => {
                 }
             })
             const data = await response.json()
-            console.log(data.records)
             setPeople(data.records)
         }
         getStudentsInSession();
-    }, [id])
+    }, [token])
+
+    useEffect(() => {
+        const getStudentSessions = async() => {
+            const response = await fetch(`${BASE_URL}/student-sessions`, {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": token
+                }
+            })
+            const data = await response.json()
+            console.log(data.map(x => x.booking))
+            setStudentSessions(data.map(x => x.booking))
+        }
+        getStudentSessions()
+    }, [token])
 
   return (
     <>
     <JoinSession title={session.title} session_date={formattedDate} user={token} session_id={session._id} />
     <LeaveSession title={session.title} session_date={formattedDate} user={token} session_id={session._id}/>
+    <RemoveStudent />
     <div className='row m-2'>
         <div className='col-sm-12 col-md-4 col-lg-4'>
         <div className="card mt-5">
@@ -73,12 +89,14 @@ const SessionDetail = () => {
             </div>
             <div className='m-3 d-flex justify-content-center'>
                 <button className='btn btn-primary btn-sm mx-2'><i className="bi bi-pencil-square"></i></button>
-                <button className='btn btn-success btn-sm mx-2' data-bs-toggle="modal" data-bs-target="#joinSession"><i className="bi bi-box-arrow-in-left"></i></button>
-                <button className='btn btn-danger btn-sm mx-2' data-bs-toggle="modal" data-bs-target="#leaveSession"><i className="bi bi-box-arrow-in-right"></i></button>
+                {!studentSessions.includes(session._id) && <button className='btn btn-success btn-sm mx-2' data-bs-toggle="modal" data-bs-target="#joinSession"><i className="bi bi-box-arrow-in-left"></i></button>}
+                {studentSessions.includes(session._id) &&  <button className='btn btn-danger btn-sm mx-2' data-bs-toggle="modal" data-bs-target="#leaveSession"><i className="bi bi-box-arrow-in-right"></i></button>}
+               
             </div>
-            <div className='text-center m-2'>
+            {studentSessions.includes(session._id) &&             <div className='text-center m-2'>
                 <a href={`${session.meeting_link}`} className='btn btn-info'>Join Meeting</a>
-            </div>
+            </div>}
+
           </div>
         </div>
         <div className='col-sm-12 col-md-6 col-lg-6'>
@@ -101,7 +119,7 @@ const SessionDetail = () => {
                         <td>{person.user.phone_number}</td>
                         <td>{person.user.email}</td>
                         <td>
-                            <a href='' className='btn btn-danger btn-sm'><i className="bi bi-person-x"></i></a>
+                            <a href='' className='btn btn-danger btn-sm' data-bs-toggle="modal" data-bs-target="#removeStudent"><i className="bi bi-person-x"></i></a>
                         </td>
                     </tr>
                 })}
