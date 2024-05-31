@@ -27,7 +27,7 @@ const Sessions = () => {
   }, [token])
 
   return (
-    <div className='row ml-2'>
+    <div className='row mt-3 ml-2'>
       <div className='col-2'></div>
       <div className='col-sm-12 col-md-12 col-lg-8'>
         <SessionsTable sessions={sessions} />

@@ -18,9 +18,6 @@ const Navbar = () => {
           <a className="nav-link text-white" href="/bookings">Bookings</a>
         </li>
         <li className="nav-item">
-          <a className="nav-link text-white" href="/sessions">Sessions</a>
-        </li>
-        <li className="nav-item">
           <a className="nav-link text-white" href="#">Account</a>
         </li>
       </ul>

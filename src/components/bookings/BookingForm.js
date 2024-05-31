@@ -31,7 +31,7 @@ const BookingForm = ({ slotId }) => {
                   body: JSON.stringify(record)
               })
               if(response.ok) {
-                  window.location.reload()
+                  window.location.replace("/")
                   console.log("Do nothing!!")
               } else {
                   alert("Something Went Wrong!!")

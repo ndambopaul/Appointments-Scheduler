@@ -44,7 +44,7 @@ const Login = ({ setShowLoginForm }) => {
         <form className="Auth-form" onSubmit={handleSubmit}>
           <div className="Auth-form-content">
             <h3 className="Auth-form-title text-center">Login Into Scheduler</h3>
-            <div className="form-group mt-3">
+            <div className="form-group mt-4">
               <label>Email address</label>
               <input
                 type="email"
@@ -62,16 +62,13 @@ const Login = ({ setShowLoginForm }) => {
                 onChange={(e) => setPassword(e.target.value)}
               />
             </div>
-            <div className="d-grid gap-2 mt-3">
+            <div className="text-center mt-3">
               <button type="submit" className="btn btn-primary">
                 Submit
               </button>
             </div>
-            <p className="forgot-password text-right mt-2">
-              Forgot <a href="#">password?</a>
-            </p>
           </div>
-          <p className='text-center'>No account yet? <a href='#' onClick={() => setShowLoginForm(false)}>Register</a></p>
+          <p className='text-center mt-3'>No account yet? <a href='#' onClick={() => setShowLoginForm(false)}>Register</a></p>
         </form>
         </div>
         <div className='col-4'></div>
