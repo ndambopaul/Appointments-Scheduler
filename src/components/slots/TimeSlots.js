@@ -2,6 +2,7 @@ import React, { useEffect, useState, useContext } from 'react'
 import TimeSlotTable from "../slots/TimeSlotsTable"
 import CreateSlot from './CreatSlot';
 import { BASE_URL } from "../../utils/config";
+import { InfinitySpin } from "react-loader-spinner";
 
 import AuthContext from '../../context/AuthContext';
 
@@ -9,8 +10,10 @@ import AuthContext from '../../context/AuthContext';
 const TimeSlots2 = () => {
   const [slots, setSlots] = useState([])
   const token = useContext(AuthContext)
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
+    setIsLoading(true)
     const getSlots = async() => {
       const response = await fetch(`${BASE_URL}/slots`, {
         method: "GET",
@@ -21,9 +24,11 @@ const TimeSlots2 = () => {
       })
       const data = await response.json()
       setSlots(data.records)
+      setIsLoading(false);
     }
     getSlots()
   }, [0])
+
 
   return (
    <div>
@@ -36,8 +41,15 @@ const TimeSlots2 = () => {
   New Slot
 </button>
         </div>
+        {isLoading ? (<InfinitySpin
+    visible={true}
+    width="200"
+    color="#4fa94d"
+    ariaLabel="infinity-spin-loading"
+     />) : (
+          <TimeSlotTable timeSlots={slots} />
+        )}
         
-        <TimeSlotTable timeSlots={slots} />
       </div>
     </div>
   
