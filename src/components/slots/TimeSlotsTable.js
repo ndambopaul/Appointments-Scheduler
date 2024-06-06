@@ -8,6 +8,7 @@ function TimeSlotTable({ timeSlots = [] }) {
                     <tr>
                     <th>#</th>
                     <th>Day</th>
+                    <th>Created By</th>
                     <th>Start time</th>
                     <th>End time</th>
                     <th></th>
@@ -19,6 +20,7 @@ function TimeSlotTable({ timeSlots = [] }) {
                         return <tr key={slot._id}>
                             <td>{index + 1}</td>
                             <td>{slot.day_name}</td>
+                            <td>{slot.creator.first_name} {slot.creator.last_name}</td>
                             <td>{slot.start_time}</td>
                             <td>{slot.end_time}</td>
                             <td>

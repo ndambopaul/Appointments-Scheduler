@@ -32,8 +32,10 @@ const Sessions = () => {
 
   return (
     <div className='row mt-3 ml-2'>
-      <div className='col-2'></div>
-      <div className='col-sm-12 col-md-12 col-lg-8'>
+      <div className='col-1'></div>
+      <div className='col-sm-12 col-md-12 col-lg-10'>
+        <h4 className='text-center'>Scheduled Sessions </h4>
+        <hr/>
         {isLoading ? (<InfinitySpin
     visible={true}
     width="200"

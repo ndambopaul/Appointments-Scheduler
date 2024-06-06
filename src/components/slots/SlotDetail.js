@@ -36,12 +36,12 @@ const SlotDetail2 = () => {
         <div className="col-4"></div>
         <div className="col-4">
           <div className="card mt-5">
-            <div className="card-header"><h5 className="card-title">Would you like to book this session?</h5></div>
+            <div className="card-header"><h5 className="card-title">Book A Slot</h5></div>
             <div className="card-body">
-              <h5>{slot.day_name}</h5>
+              <h5>Day: {slot.day_name}</h5>
               <p className="card-text">
-                <p>Start: {slot.start_time}</p>
-                <p>End: {slot.end_time}</p>
+                <p>Starts at: {slot.start_time}</p>
+                <p>Ends at: {slot.end_time}</p>
               </p>
               <BookingModal slotId={slot._id} />
             </div>

@@ -7,6 +7,7 @@ import AuthContext from '../../context/AuthContext';
 import JoinSession from './JoinSession';
 import LeaveSession from './LeaveSession';
 import RemoveStudent from './RemoveStudent';
+import ModifySession from './ModifySession';
 
 import dayjs from 'dayjs';
 
@@ -31,6 +32,7 @@ const SessionDetail = () => {
                 }
             })
             const data = await response.json()
+            console.log(data)
             setSession(data)
         }
         getSession()
@@ -38,6 +40,7 @@ const SessionDetail = () => {
 
     const formattedDate = dayjs(session.session_date).format('YYYY-MM-DD')
     console.log(formattedDate)
+    
 
     useEffect(() => {
         const getStudentsInSession = async() => {
@@ -74,6 +77,7 @@ const SessionDetail = () => {
     <>
     <JoinSession title={session.title} session_date={formattedDate} user={token} session_id={session._id} />
     <LeaveSession title={session.title} session_date={formattedDate} user={token} session_id={session._id}/>
+    <ModifySession session_title={session.title} session_date={formattedDate} session_id={session._id} />
     <RemoveStudent />
     <div className='row m-2'>
         <div className='col-sm-12 col-md-4 col-lg-4'>
@@ -91,9 +95,9 @@ const SessionDetail = () => {
                 <button className='btn btn-primary btn-sm mx-2'><i className="bi bi-pencil-square"></i></button>
                 {!studentSessions.includes(session._id) && <button className='btn btn-success btn-sm mx-2' data-bs-toggle="modal" data-bs-target="#joinSession"><i className="bi bi-box-arrow-in-left"></i></button>}
                 {studentSessions.includes(session._id) &&  <button className='btn btn-danger btn-sm mx-2' data-bs-toggle="modal" data-bs-target="#leaveSession"><i className="bi bi-box-arrow-in-right"></i></button>}
-               
+               <button className='btn btn-secondary btn-sm' data-bs-toggle="modal" data-bs-target="#modifySession"><i class="bi bi-gear"></i></button>
             </div>
-            {studentSessions.includes(session._id) &&             <div className='text-center m-2'>
+            {studentSessions.includes(session._id) && <div className='text-center m-2'>
                 <a href={`${session.meeting_link}`} className='btn btn-info'>Join Meeting</a>
             </div>}
 

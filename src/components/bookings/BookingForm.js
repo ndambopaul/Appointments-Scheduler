@@ -5,7 +5,7 @@ import AuthContext from "../../context/AuthContext";
 const BookingForm = ({ slotId }) => {
   const [title, setTitle] = useState(null);
   const [desc, setDesc] = useState(null);
-  const [date, setDate] = useState(null);
+  const [sessionDate, setDate] = useState(null);
   
 
   const token = useContext(AuthContext);
@@ -15,7 +15,7 @@ const BookingForm = ({ slotId }) => {
       const record = {
           title: title,
           description: desc,
-          date: date,
+          session_date: sessionDate,
           slot: slotId
       }
       console.log(record)
@@ -40,7 +40,6 @@ const BookingForm = ({ slotId }) => {
           } catch (error) {
               console.log(error.message)
           }
-             
       }
       createItem()
   }
@@ -64,7 +63,7 @@ const BookingForm = ({ slotId }) => {
             className="form-control"
             id="floatingInput"
             placeholder="Date of the session"
-            value={date}
+            value={sessionDate}
             onChange={(e) => setDate(e.target.value)}
           />
           <label htmlFor="floatingInput">Session Date</label>
