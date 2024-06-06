@@ -3,7 +3,7 @@ import React from 'react';
 function TimeSlotTable({ timeSlots = [] }) {
     return (
         
-        <table className="table table-responsive">
+        <table className="table">
                 <thead>
                     <tr>
                     <th>#</th>
