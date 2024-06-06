@@ -2,8 +2,8 @@ import React from 'react';
 
 function TimeSlotTable({ timeSlots = [] }) {
     return (
-        
-        <table className="table">
+        <>
+        <table className="table table-sm">
                 <thead>
                     <tr>
                     <th>#</th>
@@ -32,8 +32,8 @@ function TimeSlotTable({ timeSlots = [] }) {
                       </tr>
                     })}
                 </tbody>
-            </table>
-            
+        </table>
+        </>
     );
 }
 
