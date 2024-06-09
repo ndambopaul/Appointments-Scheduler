@@ -21,6 +21,9 @@ const Navbar = () => {
     </button>
     <div className="collapse navbar-collapse justify-content-end" id="navbarNav">
       <ul className="navbar-nav">
+      <li className="nav-item">
+          <a className="nav-link text-white fw-bold" href="/users">Users</a>
+        </li>
         <li className="nav-item">
           <a className="nav-link text-white fw-bold" href="/">Slots</a>
         </li>

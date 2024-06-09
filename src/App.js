@@ -12,6 +12,7 @@ import AuthContext from './context/AuthContext';
 // Session Imports
 import Sessions from './components/sessions/Sessions';
 import SessionDetail from './components/sessions/SessionDetail';
+import Users from './components/users/Users';
 
 
 import Wrapper from './wrapper/Wrapper';
@@ -32,6 +33,7 @@ function App() {
           <Route path='/sessions' element={<Sessions />} />
           <Route path='/bookings' element={<Sessions />} />
           <Route path='/sessions/:id' element={<SessionDetail />} />
+          <Route path='/users' element={<Users />} />
           
         </Routes>
       </Router>    
